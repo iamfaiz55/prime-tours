@@ -1,0 +1,79 @@
+/* src/components/MasonryGallery.css */
+
+/* Base styles for the gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Flexibly adjust the column size */
+  gap: 16px; /* Space between items */
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Styles for the individual gallery item */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Ensure the images fill the container and maintain aspect ratio */
+.gallery-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* On hover, slightly zoom in the image */
+.gallery-img:hover {
+  transform: scale(1.1);
+}
+
+/* Media queries for mobile and tablet screens */
+@media (max-width: 768px) {
+  /* On medium screens (Tablets), reduce the size of the grid items */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Smaller grid items */
+  }
+  .gallery-item {
+    border-radius: 8px; /* Slightly less rounding on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  /* On small screens (Mobile), reduce the image size and grid layout */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Even smaller grid items */
+  }
+  .gallery-img {
+    height: 180px; /* Optional: fix height of images for small screens */
+  }
+  .gallery-item {
+    border-radius: 6px; /* More rounded corners on mobile */
+  }
+}
+
+/* Media query for large screens (e.g., laptops/desktops) */
+@media (min-width: 1200px) {
+  /* Increase the grid column count for larger screens */
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 equal-width columns for large screens */
+  }
+
+  .gallery-item {
+    border-radius: 16px; /* Slightly more rounded corners for large screens */
+  }
+
+  .gallery-img {
+    height: 300px; /* Fix the height of images on large screens */
+  }
+}
+
+/* Optional: Large screen-specific hover effect */
+@media (min-width: 1200px) {
+  .gallery-item:hover {
+    transform: scale(1.05); /* Slight scale effect on hover for large screens */
+  }
+}

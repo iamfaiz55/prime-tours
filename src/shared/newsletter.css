@@ -1,0 +1,22 @@
+/* Subtitle.css */
+.subtitle {
+    font-family: 'Pacifico', cursive; /* Handwritten cursive font */
+    font-size: 1.8rem; /* Adjust size for visibility */
+    color: #333333; /* Dark gray for a refined look */
+    background-color: #ffd700; /* Golden background */
+    padding: 5px 10px; /* Padding for better spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center-align text */
+    display: inline-block; /* Keep the subtitle compact */
+    margin: 15px 0; /* Add spacing around the subtitle */
+    letter-spacing: 1px; /* Slight letter spacing for readability */
+  }
+  
+  /* Add hover effects */
+  .subtitle:hover {
+    background-color: #ffc107; /* Slightly darker gold on hover */
+    transform: scale(1.05); /* Subtle zoom effect */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+  
