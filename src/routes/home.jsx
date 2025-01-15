@@ -84,12 +84,12 @@ const Home = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1 }}
               >
-                <div className="hero_content">
-                  <div className="hero_subtitle flex items-center gap-2">
+                <div className="text-center md:text-left">
+                  <div className="hero_subtitle flex justify-center md:justify-start  gap-2 ">
                     <Subtitle subtitle="Know Before You Go" />
-                    <img src={worldImg} alt="world" className="w-16 h-16 rounded-full" />
+                    <img src={worldImg} alt="world" className="w-16 h-16 rounded-full mt-3" />
                   </div>
-                  <h1 className="text-3xl lg:text-5xl font-semibold">
+                  <h1 className="text-1xl lg:text-5xl font-semibold">
                     Travelling opens the door to creating{" "}
                     <span className="highlight text-yellow-500">Memories</span>
                   </h1>
