@@ -164,9 +164,9 @@ const TourList = () => {
                   </span>
                 </div>
                 <h5 className="mt-3 text-lg font-semibold">
-                  <Link to={`/tours/${tour._id}`} className="text-black no-underline hover:underline">
+                  <p className="text-black no-underline hover:underline">
                     {tour.title}
-                  </Link>
+                  </p>
                 </h5>
                 <div className="flex items-center justify-between mt-3">
                   {/* <h5 className="text-gray-700">
