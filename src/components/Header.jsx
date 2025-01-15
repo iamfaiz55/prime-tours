@@ -58,7 +58,7 @@ const Header = () => {
         <div className="container mx-auto flex items-center justify-between">
           {/* Logo Section */}
           <div className="px-10 md:px-10">
-            <img src={logo} alt="Prime Tours Logo" className="w-32" />
+            <img src={logo} alt="Prime Tours Logo" className="w-24 md:w-32" />
           </div>
 
           {/* Desktop Navigation (visible on large screens) */}
