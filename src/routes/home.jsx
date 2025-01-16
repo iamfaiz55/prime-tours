@@ -4,7 +4,7 @@ import { Slide } from "@mui/material";
 import { motion } from 'framer-motion';  
 import heroImg from '../assets/images/maqbara-vertical.avif';
 import heroImg02 from '../assets/images/elora-vertical.png';
-import heroVideo from '../assets/images/gogababa.jpeg';
+import heroVideo from '../assets/images/fort.jpg';
 import worldImg from '../assets/images/world.png';
 import experienceImg from '../assets/images/experience.png';
 import Subtitle from '../shared/Subtitle';
@@ -162,7 +162,7 @@ const Home = () => {
                   transition={{ duration: 1, delay: 0.5 }}
                 >
                   <div className="hero_img-box hero_video-box mt-6">
-                    <video src={heroVideo} controls className="rounded-lg shadow-md" />
+                    <img src={heroVideo} className="rounded-lg shadow-md" />
                   </div>
                 </motion.div>
                 <motion.div
