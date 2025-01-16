@@ -10,6 +10,7 @@ import panch from './../assets/images/panchavatiNashik.jpg';
 import shani from './../assets/images/shani.jpg';
 import mumbai from './../assets/images/mumbai.jpeg';
 import pune from './../assets/images/pune.jpg';
+import panchakki from './../assets/images/panchakki.jpeg';
 import { Helmet } from 'react-helmet-async';
 
 const TourList = () => {
@@ -22,10 +23,7 @@ const TourList = () => {
       photo: elora,
       price: 500,
       featured: true,
-      reviews: [
-        { rating: 5, comment: 'Best vacation ever!' },
-        { rating: 4, comment: 'The water was so clear!' },
-      ],
+
     },
     {
       _id: '2',
@@ -34,10 +32,7 @@ const TourList = () => {
       photo: daulatabad,
       // price: 150,
       featured: false,
-      reviews: [
-        { rating: 4, comment: 'Loved the Colosseum!' },
-        { rating: 3, comment: 'Crowded but worth it.' },
-      ],
+
     },
     {
       _id: '3',
@@ -46,10 +41,7 @@ const TourList = () => {
       photo: ajanta,
       // price: 300,
       featured: true,
-      reviews: [
-        { rating: 5, comment: 'The views were breathtaking!' },
-        { rating: 5, comment: 'Best trekking experience!' },
-      ],
+     
     },
     {
       _id: '4',
@@ -58,10 +50,7 @@ const TourList = () => {
       photo: city,
       // price: 300,
       featured: true,
-      reviews: [
-        { rating: 5, comment: 'The views were breathtaking!' },
-        { rating: 5, comment: 'Best trekking experience!' },
-      ],
+     
     },
     {
       _id: '5',
@@ -70,10 +59,7 @@ const TourList = () => {
       photo: panch,
       // price: 300,
       featured: true,
-      reviews: [
-        { rating: 5, comment: 'The views were breathtaking!' },
-        { rating: 5, comment: 'Best trekking experience!' },
-      ],
+     
     },
     {
       _id: '6',
@@ -82,10 +68,7 @@ const TourList = () => {
       photo: shani,
       // price: 300,
       featured: true,
-      reviews: [
-        { rating: 5, comment: 'The views were breathtaking!' },
-        { rating: 5, comment: 'Best trekking experience!' },
-      ],
+     
     },
     {
       _id: '7',
@@ -94,10 +77,7 @@ const TourList = () => {
       photo: mumbai,
       // price: 300,
       featured: true,
-      reviews: [
-        { rating: 5, comment: 'The views were breathtaking!' },
-        { rating: 5, comment: 'Best trekking experience!' },
-      ],
+     
     },
     {
       _id: '8',
@@ -106,10 +86,16 @@ const TourList = () => {
       photo: pune,
       // price: 300,
       featured: true,
-      reviews: [
-        { rating: 5, comment: 'The views were breathtaking!' },
-        { rating: 5, comment: 'Best trekking experience!' },
-      ],
+     
+    },
+    {
+      _id: '9',
+      title: 'Panchakki',
+      city: 'Aurangabad',
+      photo: panchakki,
+      // price: 300,
+      featured: true,
+     
     },
   ];
 

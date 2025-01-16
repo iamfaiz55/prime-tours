@@ -1,9 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async'; // Import Helmet for SEO metadata
-import ciaz from "../assets/images/ciaz.png";
+import ciaz from "../assets/images/ciaz1.png";
 import swift from "../assets/images/swift.png";
-import innova from "../assets/images/innova.png";
-import crysta from "../assets/images/crysta.png";
+import innova from "../assets/images/innova1.png";
+import crysta from "../assets/images/crysta1.png";
 
 const CarList = () => {
 
@@ -19,14 +19,14 @@ const CarList = () => {
       id: 2,
       name: 'Ciaz',
       image: ciaz,
-      capacity: 6,
+      capacity: 4,
       featured: false,
     },
     {
       id: 3,
       name: 'Innova Crysta',
       image: crysta,
-      capacity: 5,
+      capacity: 7,
       featured: false,
     },
     {

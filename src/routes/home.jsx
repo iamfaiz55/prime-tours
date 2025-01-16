@@ -237,7 +237,9 @@ const Home = () => {
             <div className="mb-8">
               <Subtitle subtitle={"Experience"} />
               <h2 className="text-3xl font-semibold">With our all experience <br />we will serve you</h2>
-              <p className="mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, temporibus!</p>
+              <p className="mt-4">
+              With decades of experience in the industry, we’re committed to creating remarkable journeys. 
+                          </p>
             </div>
             <div className="flex gap-8 mb-5 justify-center">
               <div className="text-center">
