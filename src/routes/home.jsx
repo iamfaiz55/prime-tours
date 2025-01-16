@@ -4,7 +4,7 @@ import { Slide } from "@mui/material";
 import { motion } from 'framer-motion';  
 import heroImg from '../assets/images/maqbara-vertical.avif';
 import heroImg02 from '../assets/images/elora-vertical.png';
-import heroVideo from '../assets/images/hero-video.mp4';
+import heroVideo from '../assets/images/gogababa.jpeg';
 import worldImg from '../assets/images/world.png';
 import experienceImg from '../assets/images/experience.png';
 import Subtitle from '../shared/Subtitle';
@@ -17,7 +17,7 @@ import "./home.css";
 const Home = () => {
   const slides = [
     { type: 'image', src: heroImg, alt: 'Hero 1' },
-    { type: 'video', src: heroVideo },
+    { type: 'image', src: heroVideo ,alt: 'Hero 3'},
     { type: 'image', src: heroImg02, alt: 'Hero 2' },
   ];
 
@@ -115,7 +115,7 @@ const Home = () => {
                       key={index}
                     >
                       <div className="absolute top-0 left-0 w-full h-full">
-                        {slide.type === "image" ? (
+                        {
                           <motion.img
                             src={slide.src}
                             alt={slide.alt}
@@ -124,16 +124,7 @@ const Home = () => {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1 }}
                           />
-                        ) : (
-                          <motion.video
-                            src={slide.src}
-                            controls
-                            className="w-full h-full object-cover rounded-lg"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 1 }}
-                          />
-                        )}
+                        }
                       </div>
                     </Slide>
                   ))}
