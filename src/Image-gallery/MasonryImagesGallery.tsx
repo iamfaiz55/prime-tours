@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import galleryImg01 from '../assets/images/gallery-01.jpg';
 import galleryImg02 from '../assets/images/gallery-02.jpg';
@@ -10,8 +8,8 @@ import galleryImg06 from '../assets/images/gallery-06.jpg';
 import galleryImg07 from '../assets/images/gallery-07.jpg';
 import './MasonryGallery.css'; // Import custom CSS
 
-const MasonryImagesGallery = () => {
-  const galleryImages = [
+const MasonryImagesGallery: React.FC = () => {
+  const galleryImages: string[] = [
     galleryImg01,
     galleryImg07,
     galleryImg02,

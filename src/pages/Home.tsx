@@ -1,23 +1,25 @@
+'use client';
+
 import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async"; // Import Helmet
 import { Slide } from "@mui/material";
 import { motion } from 'framer-motion';  
-import heroImg from '../assets/images/maqbara-vertical.avif';
-import heroImg02 from '../assets/images/elora-vertical.png';
-import heroVideo from '../assets/images/fort.jpg';
-import worldImg from '../assets/images/world.png';
-import experienceImg from '../assets/images/experience.png';
+import Image from 'next/image';
+import heroImg from '../../public/assets/images/maqbara-vertical.avif';
+import heroImg02 from '../../public/assets/images/elora-vertical.png';
+import heroVideo from '../../public/assets/images/fort.jpg';
+import worldImg from '../../public/assets/images/world.png';
+import experienceImg from '../../public/assets/images/experience.png';
 import Subtitle from '../shared/Subtitle';
 import Services from '../services/Services';
 import TourList from '../components/FeaturedTourList';
-import CarList from '../pages/Car';
+import CarList from './Car';
 import MasonryImagesGallery from '../Image-gallery/MasonryImagesGallery'; 
 import "./home.css";
 
-const Home = () => {
+const Home: React.FC = () => {
   const slides = [
     { type: 'image', src: heroImg, alt: 'Hero 1' },
-    { type: 'image', src: heroVideo ,alt: 'Hero 3'},
+    { type: 'image', src: heroVideo, alt: 'Hero 3'},
     { type: 'image', src: heroImg02, alt: 'Hero 2' },
   ];
 
@@ -59,21 +61,6 @@ const Home = () => {
 
   return (
     <>
-      {/* SEO Metadata with Helmet */}
-      <Helmet>
-        <title>Prime Tours and Travels - Explore Iconic Sites</title>
-        <meta name="description" content="Welcome to Prime Tours and Travels, your trusted travel partner in Aurangabad. Explore Ajanta, Ellora, and Bibi Ka Maqbara with our seamless and personalized services." />
-        <meta name="keywords" content="Travel, Tours, Aurangabad, Ajanta, Ellora, Bibi Ka Maqbara, Prime Tours" />
-        <meta property="og:title" content="Prime Tours and Travels" />
-        <meta property="og:description" content="Explore iconic sites like Ajanta, Ellora, and Bibi Ka Maqbara with Prime Tours and Travels." />
-        <meta property="og:image" content={heroImg} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Prime Tours and Travels" />
-        <meta name="twitter:description" content="Your trusted travel partner in Aurangabad" />
-        <meta name="twitter:image" content={heroImg} />
-      </Helmet>
-
       {/* Hero Section */}
       <section className="px-5">
         <div className="container mx-auto">
@@ -87,7 +74,7 @@ const Home = () => {
                 <div className="text-center md:text-left">
                   <div className="hero_subtitle flex justify-center md:justify-start  gap-2 ">
                     <Subtitle subtitle="Know Before You Go" />
-                    <img src={worldImg} alt="world" className="w-16 h-16 rounded-full mt-3" />
+                    <Image src={worldImg} alt="world" className="w-16 h-16 rounded-full mt-3" width={64} height={64} />
                   </div>
                   <h1 className="text-1xl lg:text-5xl font-semibold">
                     Travelling opens the door to creating{" "}
@@ -115,16 +102,19 @@ const Home = () => {
                       key={index}
                     >
                       <div className="absolute top-0 left-0 w-full h-full">
-                        {
-                          <motion.img
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 1 }}
+                        >
+                          <Image
                             src={slide.src}
                             alt={slide.alt}
                             className="w-full h-full object-cover rounded-lg"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 1 }}
+                            width={400}
+                            height={384}
                           />
-                        }
+                        </motion.div>
                       </div>
                     </Slide>
                   ))}
@@ -153,7 +143,7 @@ const Home = () => {
                   transition={{ duration: 1 }}
                 >
                   <div className="hero_img-box">
-                    <img src={heroImg} alt="" className="rounded-lg shadow-md" />
+                    <Image src={heroImg} alt="" className="rounded-lg shadow-md" width={300} height={350} />
                   </div>
                 </motion.div>
                 <motion.div
@@ -162,7 +152,7 @@ const Home = () => {
                   transition={{ duration: 1, delay: 0.5 }}
                 >
                   <div className="hero_img-box hero_video-box mt-6">
-                    <img src={heroVideo} className="rounded-lg shadow-md" />
+                    <Image src={heroVideo} alt="" className="rounded-lg shadow-md" width={300} height={350} />
                   </div>
                 </motion.div>
                 <motion.div
@@ -171,7 +161,7 @@ const Home = () => {
                   transition={{ duration: 1, delay: 1 }}
                 >
                   <div className="hero_img-box mt-12">
-                    <img src={heroImg02} alt="" className="rounded-lg shadow-md" />
+                    <Image src={heroImg02} alt="" className="rounded-lg shadow-md" width={300} height={350} />
                   </div>
                 </motion.div>
               </div>
@@ -179,6 +169,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      
       {/* Scroll to Top Button */}
       {showScrollUp && (
         <motion.button
@@ -229,7 +220,7 @@ const Home = () => {
               <Subtitle subtitle={"Experience"} />
               <h2 className="text-3xl font-semibold">With our all experience <br />we will serve you</h2>
               <p className="mt-4">
-              With decades of experience in the industry, we’re committed to creating remarkable journeys. 
+              With decades of experience in the industry, we're committed to creating remarkable journeys. 
                           </p>
             </div>
             <div className="flex gap-8 mb-5 justify-center">
@@ -248,7 +239,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <img src={experienceImg} alt="experience" className="w-96 md:w-full" />
+            <Image src={experienceImg} alt="experience" className="w-96 md:w-full" width={400} height={300} />
           </div>
         </div>
       </section>

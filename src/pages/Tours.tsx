@@ -1,13 +1,8 @@
-// import FeaturedTourList from "../components/FeaturedTourList";
-// import Subtitle from "../shared/Subtitle";
-
+import React from 'react';
 import TourList from "../components/FeaturedTourList";
 import Subtitle from "../shared/Subtitle";
 
-
-
-
-const Tours = () => {
+const Tours: React.FC = () => {
   return (
     <section>
       <div className="max-w-screen-xl mx-auto px-4 py-8">

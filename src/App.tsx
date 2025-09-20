@@ -7,7 +7,7 @@ import CarList from './pages/Car'
 import TourList from './components/FeaturedTourList'
 import NotFound from './components/NotFound'
 
-const App = () => {
+const App: React.FC = () => {
   return <>
   <BrowserRouter>
   <Routes>

@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <section className="h-screen bg-gray-50 flex flex-col items-center justify-center text-center px-6">
       {/* Animated Illustration */}
@@ -60,7 +60,7 @@ const NotFound = () => {
       >
         <Link
           to="/"
-          className="inline-block py-3 px-8 bg-yellow-500 text-white font-semibold uppercase rounded-lg shadow-md hover:bg-yellow-600 hover:shadow-lg transition-all duration-300"
+          className="inline-block py-3 px-8 bg-blue-500 text-white font-semibold uppercase rounded-lg shadow-md hover:bg-blue-600 hover:shadow-lg transition-all duration-300"
         >
           Go Back Home
         </Link>

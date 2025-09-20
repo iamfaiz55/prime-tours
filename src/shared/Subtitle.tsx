@@ -1,7 +1,11 @@
 import React from 'react';
 import './newsletter.css'; // Import the external CSS
 
-const Subtitle = ({ subtitle }) => {
+interface SubtitleProps {
+  subtitle: string;
+}
+
+const Subtitle: React.FC<SubtitleProps> = ({ subtitle }) => {
   return (
     <h3 className="subtitle">
       {subtitle}
