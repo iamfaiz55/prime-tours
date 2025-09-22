@@ -234,15 +234,15 @@ const Header: React.FC = () => {
                      <h4 className="text-xs font-semibold text-gray-600 mb-2">Quick Contact</h4>
                      <div className="space-y-1">
                        <motion.a
-                         href="tel:+919960669724"
+                         href="tel:+919595722214"
                          className="flex items-center text-xs text-gray-600 hover:text-blue-600 transition-colors duration-300"
                          whileHover={{ x: 3 }}
                        >
                          <i className="ri-phone-line mr-2 text-sm"></i>
-                         +91 9960669724
+                         +91 9595722214
                        </motion.a>
                        <motion.a
-                         href="https://wa.me/919960669724"
+                         href="https://wa.me/919595"
                          className="flex items-center text-xs text-gray-600 hover:text-green-600 transition-colors duration-300"
                          whileHover={{ x: 3 }}
                        >

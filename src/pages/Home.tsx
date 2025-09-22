@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo, lazy, Suspense } from "react";
 import { Slide } from "@mui/material";
 import { motion } from 'framer-motion';  
-import Image from 'next/image';
+import OptimizedImage from '../components/OptimizedImage';
 import heroImg from '../../public/assets/images/maqbara-vertical.avif';
 import heroImg02 from '../../public/assets/images/elora-vertical.png';
 import heroVideo from '../../public/assets/images/fort.jpg';
@@ -16,12 +16,15 @@ import CarList from './Car';
 import MasonryImagesGallery from '../Image-gallery/MasonryImagesGallery'; 
 import "./home.css";
 
-const Home: React.FC = () => {
-  const slides = [
+// Lazy load heavy components
+const LazyMasonryGallery = lazy(() => import('../Image-gallery/MasonryImagesGallery'));
+
+const Home: React.FC = React.memo(() => {
+  const slides = useMemo(() => [
     { type: 'image', src: heroImg, alt: 'Hero 1' },
     { type: 'image', src: heroVideo, alt: 'Hero 3'},
     { type: 'image', src: heroImg02, alt: 'Hero 2' },
-  ];
+  ], []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showScrollUp, setShowScrollUp] = useState(false);
@@ -33,26 +36,26 @@ const Home: React.FC = () => {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-  };
+  }, [slides.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-  };
+  }, [slides.length]);
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
   // Show or hide Scroll Up Button based on scroll position
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (window.scrollY > 200) {
       setShowScrollUp(true);
     } else {
       setShowScrollUp(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -74,7 +77,7 @@ const Home: React.FC = () => {
                 <div className="text-center md:text-left">
                   <div className="hero_subtitle flex justify-center md:justify-start  gap-2 ">
                     <Subtitle subtitle="Know Before You Go" />
-                    <Image src={worldImg} alt="world" className="w-16 h-16 rounded-full mt-3" width={64} height={64} />
+                    <OptimizedImage src={worldImg} alt="world" className="w-16 h-16 rounded-full mt-3" priority />
                   </div>
                   <h1 className="text-1xl lg:text-5xl font-semibold">
                     Travelling opens the door to creating{" "}
@@ -107,12 +110,11 @@ const Home: React.FC = () => {
                           animate={{ opacity: 1 }}
                           transition={{ duration: 1 }}
                         >
-                          <Image
+                          <OptimizedImage
                             src={slide.src}
                             alt={slide.alt}
                             className="w-full h-full object-cover rounded-lg"
-                            width={400}
-                            height={384}
+                            priority={index === 0}
                           />
                         </motion.div>
                       </div>
@@ -143,7 +145,7 @@ const Home: React.FC = () => {
                   transition={{ duration: 1 }}
                 >
                   <div className="hero_img-box">
-                    <Image src={heroImg} alt="" className="rounded-lg shadow-md" width={300} height={350} />
+                    <OptimizedImage src={heroImg} alt="" className="rounded-lg shadow-md" priority />
                   </div>
                 </motion.div>
                 <motion.div
@@ -152,7 +154,7 @@ const Home: React.FC = () => {
                   transition={{ duration: 1, delay: 0.5 }}
                 >
                   <div className="hero_img-box hero_video-box mt-6">
-                    <Image src={heroVideo} alt="" className="rounded-lg shadow-md" width={300} height={350} />
+                    <OptimizedImage src={heroVideo} alt="" className="rounded-lg shadow-md" />
                   </div>
                 </motion.div>
                 <motion.div
@@ -161,7 +163,7 @@ const Home: React.FC = () => {
                   transition={{ duration: 1, delay: 1 }}
                 >
                   <div className="hero_img-box mt-12">
-                    <Image src={heroImg02} alt="" className="rounded-lg shadow-md" width={300} height={350} />
+                    <OptimizedImage src={heroImg02} alt="" className="rounded-lg shadow-md" />
                   </div>
                 </motion.div>
               </div>
@@ -239,7 +241,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <Image src={experienceImg} alt="experience" className="w-96 md:w-full" width={400} height={300} />
+            <OptimizedImage src={experienceImg} alt="experience" className="w-96 md:w-full" />
           </div>
         </div>
       </section>
@@ -252,12 +254,18 @@ const Home: React.FC = () => {
             <h2 className="text-3xl font-semibold">Visit our customers' tour gallery</h2>
           </div>
           <div className="w-full">
-            <MasonryImagesGallery />
+            <Suspense fallback={
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500"></div>
+              </div>
+            }>
+              <LazyMasonryGallery />
+            </Suspense>
           </div>
         </div>
       </section>
     </>
   );
-};
+});
 
 export default Home;

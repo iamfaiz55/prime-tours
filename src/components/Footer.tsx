@@ -64,14 +64,7 @@ const Footer: React.FC = () => {
                 >
                   <i className="ri-instagram-line text-2xl"></i>
                 </motion.a>
-                <motion.a 
-                  href="https://wa.me/919960669724" 
-                  className="text-gray-500 hover:text-green-500 transition-colors duration-300"
-                  whileHover={{ scale: 1.2, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <i className="ri-whatsapp-line text-2xl"></i>
-                </motion.a>
+                
               </div>
             </div>
           </motion.div>
@@ -135,18 +128,7 @@ const Footer: React.FC = () => {
                 <i className="ri-mail-line text-lg text-blue-600"></i>
                 <span className="text-sm">info@primetours.com</span>
               </motion.li>
-              <motion.li 
-                className="flex items-center gap-3"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 1.0 }}
-                viewport={{ once: true }}
-              >
-                <i className="ri-phone-fill text-lg text-blue-600"></i>
-                <a href="tel:+919960669724" className="text-sm hover:text-blue-600 transition-colors duration-300">
-                  +91 9960669724
-                </a>
-              </motion.li>
+            
               {/* Additional Phone Numbers */}
               <motion.li 
                 className="flex items-center gap-3"
@@ -168,8 +150,8 @@ const Footer: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <i className="ri-phone-fill text-lg text-blue-600"></i>
-                <a href="tel:+918421413751" className="text-sm hover:text-blue-600 transition-colors duration-300">
-                  +91 8421413751
+                <a href="tel:+919730786261" className="text-sm hover:text-blue-600 transition-colors duration-300">
+                  +91 9730786261
                 </a>
               </motion.li>
               <motion.li 

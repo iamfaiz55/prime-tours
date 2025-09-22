@@ -97,39 +97,68 @@ const BookingForm: React.FC<BookingFormProps> = ({ isOpen, onClose, tourData, ca
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Create WhatsApp message
-    const whatsappMessage = `🏖️ *Prime Tours & Travels - Booking Request*
+    try {
+      // Validate required fields
+      if (!formData.name.trim() || !formData.phone.trim() || !formData.date) {
+        alert('Please fill in all required fields');
+        setIsSubmitting(false);
+        return;
+      }
 
-📋 *Service Details:*
-• Service: ${formData.serviceType === 'tour' ? 'Tour Package' : 'Car Rental'}
-• ${formData.serviceType === 'tour' ? 'Tour' : 'Car'}: ${formData.serviceName}${carData ? `
-• Vehicle Capacity: ${carData.capacity} passengers
-• Car Type: ${carData.name}` : ''}
+      // Create WhatsApp message with all form data (simplified format)
+      const whatsappMessage = `*Prime Tours & Travels - Booking Request*
 
-👤 *Customer Information:*
-• Name: ${formData.name}
-• Phone: ${formData.phone}
-• Email: ${formData.email}
-• ${formData.serviceType === 'tour' ? 'Travel' : 'Rental'} Date: ${formData.date}
-• Number of ${formData.serviceType === 'tour' ? 'Guests' : 'Passengers'}: ${formData.guests}
+*Service Details:*
+Service: ${formData.serviceType === 'tour' ? 'Tour Package' : 'Car Rental'}
+${formData.serviceType === 'tour' ? 'Tour' : 'Car'}: ${formData.serviceName}
+${carData ? `Vehicle Capacity: ${carData.capacity} passengers` : ''}
+${tourData && tourData.price ? `Price: ₹${tourData.price}` : ''}
 
-💬 *Additional Message:*
-${formData.message}
+*Customer Information:*
+Name: ${formData.name.trim()}
+Phone: ${formData.phone.trim()}
+Email: ${formData.email.trim() || 'Not provided'}
+${formData.serviceType === 'tour' ? 'Travel' : 'Rental'} Date: ${formData.date}
+Number of ${formData.serviceType === 'tour' ? 'Guests' : 'Passengers'}: ${formData.guests}
 
-📞 *Contact Details:*
-• Phone: +91 9595722214
-• Email: info@primetours.com
+*Additional Message:*
+${formData.message.trim() || 'No additional message'}
 
-Thank you for choosing Prime Tours & Travels! We'll contact you soon to confirm your booking.`;
+*Contact Details:*
+Phone: +91 9730786261
+Email: info@primetours.com
 
-    // Encode message for WhatsApp URL
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappUrl = `https://wa.me/9595722214?text=${encodedMessage}`;
+Thank you for choosing Prime Tours & Travels!`;
 
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
+      // Create WhatsApp URL with proper encoding
+      const whatsappUrl = `https://wa.me/919730786261?text=${encodeURIComponent(whatsappMessage)}`;
+
+      // Try to open WhatsApp
+      const whatsappWindow = window.open(whatsappUrl, '_blank');
+      
+      // If popup blocked, try alternative method
+      if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed == 'undefined') {
+        // Fallback: copy to clipboard and show instructions
+        navigator.clipboard.writeText(whatsappMessage).then(() => {
+          alert('WhatsApp popup was blocked. Message copied to clipboard. Please paste it in WhatsApp to +91 9730786261');
+        }).catch(() => {
+          // If clipboard fails, show the message in an alert
+          alert(`WhatsApp popup blocked. Please send this message to +91 9730786261:\n\n${whatsappMessage}`);
+        });
+      }
+      
+      // Log the data being sent (for debugging)
+      console.log('Form data being sent to WhatsApp:', formData);
+      console.log('WhatsApp URL:', whatsappUrl);
+      
+    } catch (error) {
+      console.error('Error sending to WhatsApp:', error);
+      alert('There was an error opening WhatsApp. Please try again.');
+      setIsSubmitting(false);
+      return;
+    }
     
-    // Show success animation
+    // Show success animation immediately
     setIsSubmitting(false);
     setIsSubmitted(true);
     

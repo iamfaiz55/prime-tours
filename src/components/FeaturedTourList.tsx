@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import OptimizedImage from './OptimizedImage';
 // import maqbara from '../assets/maqbara.jpeg';
 import elora from '../assets/elora.jpeg';
 import ajanta from '../assets/ajanta.jpeg';
@@ -11,8 +12,8 @@ import mumbai from '../assets/images/mumbai.jpeg';
 import pune from '../assets/images/pune.jpg';
 import panchakki from '../assets/images/panchakki.jpeg';
 
-const TourList: React.FC = () => {
-  const featuredTours = [
+const TourList: React.FC = React.memo(() => {
+  const featuredTours = useMemo(() => [
     {
       _id: '1',
       title: 'Elora Caves',
@@ -77,35 +78,68 @@ const TourList: React.FC = () => {
       photo: panchakki,
       featured: true,
     },
-  ];
+  ], []);
+
+  const handleBookNow = useCallback((tourId: string) => {
+    // This will be handled by parent component or context
+    console.log('Book now clicked for tour:', tourId);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        type: 'spring',
+        stiffness: 100
+      }
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {featuredTours.map((tour) => (
+      <motion.div 
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {featuredTours.map((tour, index) => (
           <motion.div
             key={tour._id}
             className="mb-4"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, type: 'spring', stiffness: 100 }}
+            variants={itemVariants}
           >
-            <div className="tour_card shadow-lg border border-transparent rounded-lg overflow-hidden hover:scale-105 transition-all">
+            <div className="tour_card shadow-lg border border-transparent rounded-lg overflow-hidden hover:scale-105 transition-all duration-300">
               <div className="relative">
-                <img 
-                  src={tour.photo} 
-                  alt={tour.title} 
-                  className="w-full h-48 object-cover" 
+                <OptimizedImage
+                  src={tour.photo}
+                  alt={tour.title}
+                  className="w-full h-48"
+                  priority={index < 3} // Load first 3 images with priority
                 />
                 {tour.featured && (
-                  <span className="absolute bottom-0 right-0 bg-yellow-500 text-black py-1 px-2 rounded-bl-lg">
+                  <span className="absolute bottom-0 right-0 bg-yellow-500 text-black py-1 px-2 rounded-bl-lg text-xs font-medium">
                     Featured
                   </span>
                 )}
               </div>
               <div className="p-4">
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1 text-gray-500">
+                  <span className="flex items-center gap-1 text-gray-500 text-sm">
                     <i className="ri-map-pin-line"></i> {tour.city}
                   </span>
                 </div>
@@ -115,8 +149,11 @@ const TourList: React.FC = () => {
                   </p>
                 </h5>
                 <div className="flex items-center justify-between mt-3">
-                  <a href="tel:9960669724">
-                    <button className="bg-yellow-500 text-black text-sm py-2 px-4 rounded hover:bg-yellow-600 transition-all">
+                  <a href="tel:9730786261">
+                    <button 
+                      className="bg-yellow-500 text-black text-sm py-2 px-4 rounded hover:bg-yellow-600 transition-all duration-200 font-medium"
+                      onClick={() => handleBookNow(tour._id)}
+                    >
                       Book Now
                     </button>
                   </a>
@@ -125,9 +162,9 @@ const TourList: React.FC = () => {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
-};
+});
 
 export default TourList;

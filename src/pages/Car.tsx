@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import ciaz from "../assets/images/ciaz1.png";
 import swift from "../assets/images/swift.png";
 import innova from "../assets/images/innova1.png";
-import crysta from "../assets/images/crysta1.png";
 import BookingForm from '../components/BookingForm';
 
 // Define types
@@ -42,18 +41,35 @@ const CarList: React.FC = () => {
     },
     {
       id: 3,
-      name: 'Innova Crysta',
-      image: crysta,
-      capacity: 7,
+      name: 'Toyota Etios',
+      image: "https://res.cloudinary.com/dpc5d15ci/image/upload/v1758566053/etios_qfwuac.png",
+      capacity: 4,
       featured: false,
     },
     {
       id: 4,
+      name: 'Kia Carens',
+      image: "https://res.cloudinary.com/dpc5d15ci/image/upload/v1758565900/carens_c0dphz.png",
+      capacity: 7,
+      featured: false,
+    },
+    {
+      id: 5,
       name: 'Toyota Innova',
+      image:"https://res.cloudinary.com/dpc5d15ci/image/upload/v1758565440/innova-prime-tours_qdlmfk.png" ,
+      capacity: 7,
+      featured: false,
+    },
+    {
+      id: 6,
+      name: 'Innova Crysta',
       image: innova,
       capacity: 7,
       featured: false,
     },
+    
+    
+  
   ];
 
   return (
