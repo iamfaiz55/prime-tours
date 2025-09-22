@@ -52,7 +52,7 @@ const Services: React.FC = () => {
           content="Explore our wide range of services including weather forecasts, best tour guides, and customized travel itineraries to enhance your travel experience."
         />
         <meta property="og:image" content="path_to_image_for_og_image" />
-        <meta property="og:url" content="https://www.primetours.com/services" />
+        <meta property="og:url" content="https://www.primetourstravels.com/services" />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card Tags */}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
-import logo from '../assets/images/logo5.png';
+import logo from '../assets/images/logo6.png';
 
 // Define the navigation links type
 interface NavLinkItem {

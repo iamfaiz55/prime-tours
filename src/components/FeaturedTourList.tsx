@@ -1,7 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import OptimizedImage from './OptimizedImage';
-// import maqbara from '../assets/maqbara.jpeg';
 import elora from '../assets/elora.jpeg';
 import ajanta from '../assets/ajanta.jpeg';
 import daulatabad from '../assets/daulatabad.jpeg';
@@ -19,7 +18,7 @@ const TourList: React.FC = React.memo(() => {
       title: 'Elora Caves',
       city: 'Aurangabad',
       photo: elora,
-      price: 500,
+      price: '₹1799',
       featured: true,
     },
     {
@@ -27,6 +26,7 @@ const TourList: React.FC = React.memo(() => {
       title: 'Historical Tour Daulatabad And Khuldabad',
       city: 'Aurangabad',
       photo: daulatabad,
+      price: '₹1499',
       featured: false,
     },
     {
@@ -34,13 +34,15 @@ const TourList: React.FC = React.memo(() => {
       title: 'Ajanta Caves',
       city: 'Aurangabad',
       photo: ajanta,
+      price: '₹2699',
       featured: true,
     },
     {
       _id: '4',
-      title: 'Local Signtseeing',
+      title: 'Local Sightseeing',
       city: 'Aurangabad',
       photo: city,
+      price: '₹1799',
       featured: true,
     },
     {
@@ -48,6 +50,7 @@ const TourList: React.FC = React.memo(() => {
       title: 'Panchwati',
       city: 'Nashik',
       photo: panch,
+      price: '₹12/km (4-seater) | ₹16/km (7-seater)',
       featured: true,
     },
     {
@@ -55,6 +58,7 @@ const TourList: React.FC = React.memo(() => {
       title: 'Shani Shingnapur',
       city: 'Ahmadnagar',
       photo: shani,
+      price: '₹2799',
       featured: true,
     },
     {
@@ -62,6 +66,7 @@ const TourList: React.FC = React.memo(() => {
       title: 'Mumbai',
       city: 'Maharashtra',
       photo: mumbai,
+      price: '₹12/km (4-seater) | ₹16/km (7-seater)',
       featured: true,
     },
     {
@@ -69,6 +74,7 @@ const TourList: React.FC = React.memo(() => {
       title: 'Pune',
       city: 'Maharashtra',
       photo: pune,
+      price: '₹12/km (4-seater) | ₹16/km (7-seater)',
       featured: true,
     },
     {
@@ -76,12 +82,28 @@ const TourList: React.FC = React.memo(() => {
       title: 'Panchakki',
       city: 'Aurangabad',
       photo: panchakki,
+      price: '₹1799',
+      featured: true,
+    },
+    {
+      _id: '10',
+      title: 'Shirdi',
+      city: 'Ahmednagar',
+      photo: shani, // replace with correct Shirdi image
+      price: '₹3299',
+      featured: true,
+    },
+    {
+      _id: '11',
+      title: 'Ajanta + Ellora Same Day Tour',
+      city: 'Aurangabad',
+      photo: elora, // You could also create a combined banner image
+      price: '₹3499 (4-seater) | ₹4499 (7-seater)',
       featured: true,
     },
   ], []);
 
   const handleBookNow = useCallback((tourId: string) => {
-    // This will be handled by parent component or context
     console.log('Book now clicked for tour:', tourId);
   }, []);
 
@@ -89,9 +111,7 @@ const TourList: React.FC = React.memo(() => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
@@ -101,11 +121,7 @@ const TourList: React.FC = React.memo(() => {
       opacity: 1,
       scale: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        type: 'spring',
-        stiffness: 100
-      }
+      transition: { duration: 0.5, type: 'spring', stiffness: 100 }
     }
   };
 
@@ -118,18 +134,14 @@ const TourList: React.FC = React.memo(() => {
         animate="visible"
       >
         {featuredTours.map((tour, index) => (
-          <motion.div
-            key={tour._id}
-            className="mb-4"
-            variants={itemVariants}
-          >
+          <motion.div key={tour._id || index} className="mb-4" variants={itemVariants}>
             <div className="tour_card shadow-lg border border-transparent rounded-lg overflow-hidden hover:scale-105 transition-all duration-300">
               <div className="relative">
                 <OptimizedImage
                   src={tour.photo}
                   alt={tour.title}
                   className="w-full h-48"
-                  priority={index < 3} // Load first 3 images with priority
+                  priority={index < 3}
                 />
                 {tour.featured && (
                   <span className="absolute bottom-0 right-0 bg-yellow-500 text-black py-1 px-2 rounded-bl-lg text-xs font-medium">
@@ -137,21 +149,24 @@ const TourList: React.FC = React.memo(() => {
                   </span>
                 )}
               </div>
-              <div className="p-4">
+              <div className="p-4 flex flex-col gap-2">
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1 text-gray-500 text-sm">
                     <i className="ri-map-pin-line"></i> {tour.city}
                   </span>
                 </div>
-                <h5 className="mt-3 text-lg font-semibold">
-                  <p className="text-black no-underline hover:underline">
-                    {tour.title}
-                  </p>
+                <h5 className="text-lg font-semibold text-black">
+                  {tour.title}
                 </h5>
-                <div className="flex items-center justify-between mt-3">
-                  <a href="tel:9730786261">
+                {tour.price && (
+                  <p className="text-yellow-600 font-bold text-sm sm:text-base">
+                    {tour.price}
+                  </p>
+                )}
+                <div className="mt-2">
+                  <a href="tel:9595722214">
                     <button 
-                      className="bg-yellow-500 text-black text-sm py-2 px-4 rounded hover:bg-yellow-600 transition-all duration-200 font-medium"
+                      className="bg-yellow-500 text-black text-sm py-2 px-4 rounded hover:bg-yellow-600 transition-all duration-200 font-medium w-full sm:w-auto"
                       onClick={() => handleBookNow(tour._id)}
                     >
                       Book Now

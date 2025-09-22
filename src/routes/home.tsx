@@ -95,7 +95,7 @@ const Home: React.FC = () => {
         <meta property="og:description" content="#1 Tours & Travels in Aurangabad (Chhatrapati Sambhaji Nagar), Maharashtra. Best taxi services, car rentals, tour packages for Ajanta Ellora, Daulatabad Fort. Book now!" />
         <meta property="og:image" content={heroImg} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.primetours.com" />
+        <meta property="og:url" content="https://www.primetourstravels.com" />
         <meta property="og:site_name" content="Prime Tours and Travels" />
         
         {/* Twitter Card Tags */}
@@ -112,7 +112,7 @@ const Home: React.FC = () => {
         <meta name="geo.placename" content="Aurangabad, Maharashtra, India" />
         <meta name="geo.position" content="19.8762;75.3433" />
         <meta name="theme-color" content="#3B82F6" />
-        <link rel="canonical" href="https://www.primetours.com" />
+        <link rel="canonical" href="https://www.primetourstravels.com" />
         
         {/* Structured Data - Local Business */}
         <script type="application/ld+json">
@@ -121,9 +121,9 @@ const Home: React.FC = () => {
             "@type": "TravelAgency",
             "name": "Prime Tours and Travels",
             "description": "Best Tours & Travels in Aurangabad (Chhatrapati Sambhaji Nagar), Maharashtra. Professional taxi services, car rentals, and tour packages.",
-            "url": "https://www.primetours.com",
-            "telephone": "+919960669724",
-            "email": "info@primetours.com",
+            "url": "https://www.primetourstravels.com",
+            "telephone": "+919595722214",
+            "email": "info@primetourstravels.com",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Aurangabad",

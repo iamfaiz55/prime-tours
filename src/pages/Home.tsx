@@ -13,7 +13,7 @@ import Subtitle from '../shared/Subtitle';
 import Services from '../services/Services';
 import TourList from '../components/FeaturedTourList';
 import CarList from './Car';
-import MasonryImagesGallery from '../Image-gallery/MasonryImagesGallery'; 
+// import MasonryImagesGallery from '../Image-gallery/MasonryImagesGallery'; 
 import "./home.css";
 
 // Lazy load heavy components
