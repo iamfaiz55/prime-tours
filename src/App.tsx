@@ -1,17 +1,17 @@
 import React from 'react'
-// import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// import Layout from './components/Layout'
-// import Home from './routes/home'
-// import About from './pages/About'
-// import CarList from './pages/Car'
-// import TourList from './components/FeaturedTourList'
-// import NotFound from './components/NotFound'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from './components/Layout'
+import Home from './routes/home'
+import About from './pages/About'
+import CarList from './pages/Car'
+import TourList from './components/FeaturedTourList'
+import NotFound from './components/NotFound'
 import HostingExpired from './pages/HostingExpired'
 
 const App: React.FC = () => {
   return <>
-  <HostingExpired />
-  {/* <BrowserRouter>
+  {/* {/* <HostingExpired />/*} */}
+  <BrowserRouter>
   <Routes>
     <Route path='/' element={<Layout/>}>
     <Route index element={<Home/>} />
@@ -22,7 +22,7 @@ const App: React.FC = () => {
     </Route>
   
   </Routes>
-  </BrowserRouter> */}
+  </BrowserRouter>
   </>
 }
 
